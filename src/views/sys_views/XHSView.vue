@@ -214,6 +214,31 @@ export default {
 </script>
   
   <style scoped>
+element.style {
+    position: static;
+    display: none;
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    margin: 0px;
+    padding: 0px;
+    z-index: 0;
+    background: none;
+    border: none;
+    opacity: 1;
+    overflow: visible;
+    text-align: left;
+    clip: rect(0px, 0px, 0px, 0px);
+    outline: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
 .mc-root {
   background-color: #f5f5f5;
   padding: 20px;

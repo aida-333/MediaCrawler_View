@@ -9,9 +9,14 @@
         aria-required="true"
         :boder="true"
         :rules="rules"
+        class="el-form"
+        label-position="top"
+        label-suffix=":"
+        
       >
-        <el-form-item class="login_type" rules.platform>
-          <h2>登录平台</h2>
+      <el-form>
+        <el-form-item class="login_type" label="登录平台" rules.platform>
+          <!-- <h2>登录平台</h2> -->
           <el-radio-group
             class="radio_group"
             v-model="loginTypeForm.platform"
@@ -25,7 +30,9 @@
             <el-radio border label="B站"></el-radio>
           </el-radio-group>
         </el-form-item>
+      </el-form>
         <el-divider class="divider"></el-divider>
+        <el-form>
         <el-form-item class="login_type">
           <h2>登录方式</h2>
           <el-radio-group
@@ -38,6 +45,7 @@
             <el-radio border label="二维码登录"></el-radio>
           </el-radio-group>
         </el-form-item>
+      </el-form>
         <el-form-item size="large">
           <el-button type="primary" @click="submitForm('logintypeform')"
             >确认</el-button
@@ -61,14 +69,15 @@
         <p>请扫描二维码登录</p>
       </div>
       <div>
-        <br>
-        <br>
-        <p align="center">保存此次登录信息: 
-        <el-radio-group v-model="saveLoginInfo">
-          <el-radio label="是"></el-radio>
-          <el-radio label="否"></el-radio>
-        </el-radio-group>
-      </p>
+        <br />
+        <br />
+        <p align="center">
+          保存此次登录信息:
+          <el-radio-group v-model="saveLoginInfo">
+            <el-radio label="是"></el-radio>
+            <el-radio label="否"></el-radio>
+          </el-radio-group>
+        </p>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
@@ -85,20 +94,19 @@ export default {
       loginTypeForm: {
         platform: [],
         logintype: "",
-      
       },
       rules: {
-          platform: [
-            { required: true, message: "请选择登录平台", trigger: "change" },
-          ],
-          logintype: [
-            { required: true, message: "请选择登录方式", trigger: "change" },
-          ],
-        },
+        platform: [
+          { required: true, message: "请选择登录平台", trigger: "change" },
+        ],
+        logintype: [
+          { required: true, message: "请选择登录方式", trigger: "change" },
+        ],
+      },
       dialogVisible: false, // 控制对话框显示隐藏
       cookieValue: "", // 存储cookie值
       qrCodeUrl: "", // 存储二维码图片地址
-      saveLoginInfo: '否'  // 默认不保存登录信息
+      saveLoginInfo: "否", // 默认不保存登录信息
     };
   },
   methods: {
@@ -134,7 +142,7 @@ export default {
         this.qrCodeUrl = "https://example.com/qrcode.jpg"; // 替换为真实的二维码图片地址
       }
 
-      console.log("保存登录信息：" + this.saveLoginInfo);  // 处理保存登录信息的逻辑(待实现)
+      console.log("保存登录信息：" + this.saveLoginInfo); // 处理保存登录信息的逻辑(待实现)
       // 关闭对话框
       this.dialogVisible = false;
     },
@@ -142,6 +150,25 @@ export default {
 };
 </script>
 <style scoped>
+
+/* 如果你想让页面内的内容垂直和水平居中，可以设置body为flex容器 */
+body {
+  /* display: flex; */
+  justify-content: center; /* 水平居中 */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* 添加CSS变量，以便在需要时调整背景颜色 */
+  --background-color: cadetblue;
+  background-color: var(--background-color);
+}
+/* el-form {
+  display: flex;
+  justify-content: center; /* 在主轴上居中 */
+  /* align-items: center; 在交叉轴上居中 */
+  /* flex-wrap: wrap; 如果表单元素太多，自动换行 */
+/* }  */
+
 .login_page {
   width: 100%;
   height: 100%;
@@ -149,7 +176,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: cadetblue;
-  /* position: relative; */
+  position: relative;
 }
 
 .login_box {
@@ -172,15 +199,6 @@ export default {
   /* position: relative; */
   /* padding-right: 80px; */
 }
-
-/* align-items: center; 水平居中 */
-/* background-color: blanchedalmond;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 3px;
-  padding: 30px 80px; 同时设置上下左右的 padding */
 
 .login_box h2 {
   /* text-align: center; */
